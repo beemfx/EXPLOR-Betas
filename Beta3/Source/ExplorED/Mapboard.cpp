@@ -103,6 +103,27 @@ int ExplorMap::resetBoard(void)
 	return 0;
 }
 
+int ExplorMap::newMap(unsigned short width, unsigned short height)
+{
+	if (tiles) {
+		delete[] tiles;
+		tiles = NULL;
+	}
+
+	strcpy(fileHeader.mapType, "EM");
+	fileHeader.mapVersion = 3;
+	fileHeader.mapWidth = width;
+	fileHeader.mapHeight = height;
+	fileHeader.mapTileDataSize = fileHeader.mapWidth * fileHeader.mapHeight * sizeof(USHORT);
+	fileHeader.mapPropertyDataSize = fileHeader.mapTileDataSize * fileHeader.mapNumProperty;
+	fileHeader.mapDataSize = fileHeader.mapTileDataSize + fileHeader.mapPropertyDataSize;
+	fileHeader.mapFileSize = fileHeader.mapDataSize + sizeof(fileHeader);
+
+	tiles = new USHORT[fileHeader.mapTileDataSize];
+	memset(tiles, 0, fileHeader.mapTileDataSize);
+	return tiles ? 0 : 100;
+}
+
 int ExplorMap::openMap(char openmap[_MAX_PATH])
 {
 	//Use createfile to open the map data from file

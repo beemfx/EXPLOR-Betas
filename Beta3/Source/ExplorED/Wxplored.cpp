@@ -74,15 +74,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 		 if(errcode!=0){
 			sprintf(temperrmessage, "Error #%i: Could not open map", errcode);
 			MessageBox(NULL, temperrmessage, "Error Opening Map", MB_OK);
-			return -1;
+			explormap.newMap(15, 15);
+			strcpy(explormap.boardname, "");
 		 }
 	}else{
 		strcpy(explormap.boardname, "default.map");
 		errcode=explormap.openMap(explormap.boardname);
 		if(errcode!=0){
-			sprintf(temperrmessage, "Error #%i: Could not open previously used map", errcode);
-			MessageBox(NULL, temperrmessage, "Error Opening Map", MB_OK);
-			return -1;
+			// sprintf(temperrmessage, "Error #%i: Could not open previously used map", errcode);
+			// MessageBox(NULL, temperrmessage, "Error Opening Map", MB_OK);
+			explormap.newMap(15, 15);
+			strcpy(explormap.boardname, "");
+
 		}
 	}
 
@@ -431,20 +434,43 @@ BOOL MainCommandProc(HWND hMainWnd, WORD wCommand, WORD wNotify, HWND hControl)
 			DestroyWindow(hMainWnd);
 			return 0;
 		case CM_FILENEW:
-			return 0;
+		{
+			strcpy(explormap.boardname, "");
+			sprintf(buf, "ExplorED - [%s]", explormap.boardname);
+			SetWindowText(hMainWnd, buf);
+			explormap.newMap(15, 15);
+			RedrawWindow(hMainWnd, NULL, NULL, RDW_INVALIDATE);
+		} return 0;
 		case CM_FILESAVE_AS:
+		{
 			if (GetSaveFileName(hMainWnd, explormap.boardname)==TRUE){
 				//sprintf(temp, "Filename was:%s", tempfilename);
 				//MessageBox(hMainWnd, temp, "Notice", MB_OK);
 				//strcpy(explormap.boardname, tempfilename);
 				sprintf(buf, "ExplorED - [%s]", explormap.boardname);
 				SetWindowText(hMainWnd, buf);
-			}else return 0;
-			//Fall through and actually write to disk
+
+				if (explormap.saveMap(explormap.boardname) == 0)
+				{
+					MessageBox(hMainWnd, "File Saved Successfully", "Notice", MB_OK | MB_ICONINFORMATION);
+				}
+				else
+				{
+					MessageBox(hMainWnd, "Failed to save file.", "Error", MB_OK | MB_ICONERROR);
+				}
+			}
+		} return 0;
 		case CM_FILESAVE:
-			if((explormap.saveMap(explormap.boardname)==0))
+		{
+			if(strlen(explormap.boardname) > 0 && (explormap.saveMap(explormap.boardname)==0))
+			{
 				MessageBox(hMainWnd, "File Saved Successfully", "Notice", MB_OK|MB_ICONINFORMATION);
-			return 0;
+			}
+			else
+			{
+				MainCommandProc(hMainWnd, CM_FILESAVE_AS, 0, 0);
+			}
+		} return 0;
 		case CM_FILEPRINT:
 			return 0;
 		case CM_FILEOPEN:

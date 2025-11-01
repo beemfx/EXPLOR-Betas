@@ -32,6 +32,7 @@ typedef class ExplorMap {
 	public:
 		int saveMap(char openmap[_MAX_PATH]);
 		int resetBoard(void);
+		int newMap(unsigned short width, unsigned short height);
 		int openMap(char openmap[_MAX_PATH]);
 		int boardEdit(int x, int y, unsigned int propnum, unsigned int newvalue);
 		int boardEdit(int x, int y);
