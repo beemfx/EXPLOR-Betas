@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{912685a4-af0d-4571-a373-71e432928219}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Game\bmp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Ddsetup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\DirectMidi.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\gMapboard.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\tilemgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\tiles.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Game\bmp.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\ddsetup.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\defines.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\DirectMidi.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\gMapboard.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Player.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\resource.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\tilemgr.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\tiles.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Game\Explor.ico">
+      <Filter>Source</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Game\Readme.txt">
+      <Filter>Source</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Game\resource.rc">
+      <Filter>Source</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Explor.ico">
+      <Filter>Source</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

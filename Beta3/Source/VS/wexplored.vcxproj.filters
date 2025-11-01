@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{572154d7-2710-4ece-bdb9-19637da1b489}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\ExplorED\bitmap1.bmp">
+      <Filter>Source</Filter>
+    </Image>
+    <Image Include="..\ExplorED\bmp00001.bmp">
+      <Filter>Source</Filter>
+    </Image>
+    <Image Include="..\ExplorED\bmp00002.bmp">
+      <Filter>Source</Filter>
+    </Image>
+    <Image Include="..\ExplorED\Escript.ico">
+      <Filter>Source</Filter>
+    </Image>
+    <Image Include="..\ExplorED\Explored.ico">
+      <Filter>Source</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\ExplorED\Changelog.txt">
+      <Filter>Source</Filter>
+    </Text>
+    <Text Include="..\ExplorED\Readme.txt">
+      <Filter>Source</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ExplorED\Mapboard.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ExplorED\Wxplored.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ExplorED\Mapboard.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ExplorED\resource.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ExplorED\Wxplored.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\ExplorED\wxplored.rc">
+      <Filter>Source</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
