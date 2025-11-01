@@ -33,6 +33,7 @@ BOOL RestoreSurfaces();
 BOOL InitImages();
 BOOL GetImages();
 BOOL StartLevel(char *mapname, int x, int y, Direction Face, char *musicfile);
+BOOL EnsureDir();
 
 //Global variables
 HWND g_hwnd;
@@ -63,6 +64,12 @@ HWND hWnd;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
+	if (!EnsureDir())
+	{
+		MessageBox(NULL, "The game data could not be found.", "EXPLOR", MB_OK|MB_ICONERROR);
+		return -1;
+	}
+
 	MSG msg;
 	hWnd=CreateDefaultWindow("Explor", hInstance);
 	if(!hWnd)return FALSE;
@@ -465,4 +472,21 @@ void ShutDownDirectDraw(){
     ReleaseSurfaces();
     lpDirectDrawObject->Release();
   }
+}
+
+BOOL EnsureDir()
+{
+	const char FileToCheckFor[] = "maps\\default.map";
+	DWORD Attr = 0;
+
+	Attr = GetFileAttributes(FileToCheckFor);
+	if (INVALID_FILE_ATTRIBUTES == Attr)
+	{
+		// We might be running debug so check for the Data folder.
+		SetCurrentDirectory("..\\..\\Data");
+		Attr = GetFileAttributes(FileToCheckFor);
+		return INVALID_FILE_ATTRIBUTES != Attr;
+	}
+
+	return TRUE;
 }
